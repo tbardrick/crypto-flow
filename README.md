@@ -21,7 +21,7 @@ $ pip install -r requirements.txt
 
 For security reasons, we do not want to commit any secrets (we consider any API Keys as secrets).
 
-#### infura
+- infura
 From [infura](https://infura.io) create your API key to access hosted ETH node.
 Create`secrets.py` inside `/eth` directory.
 Define variable `API_KEY = <INSERT YOUR API KEY>` inside `secret.py`.
