@@ -24,16 +24,3 @@ start = w3.eth.get_block('latest').number - 1
 all_blocks = [*get_blocks(start_block = start)]
 
 all_transactions = [get_trans(b) for b in all_blocks]
-
-print(all_blocks, '\n\n\n\n\n\n\n')
-print(all_transactions)
-
-
-
-# interested in gas fees?
-# (note how quickly blocks are mined - new transactions... this could be interesting)
-
-
-# get all transaction data from all blocks - database
-
-# script to fetch new blocks and update database
