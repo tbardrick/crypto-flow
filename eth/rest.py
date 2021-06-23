@@ -24,3 +24,4 @@ start = w3.eth.get_block('latest').number - 1
 all_blocks = [*get_blocks(start_block = start)]
 
 all_transactions = [get_trans(b) for b in all_blocks]
+print(all_transactions)
