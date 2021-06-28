@@ -48,6 +48,9 @@ For security reasons, we do not want to commit any secrets (we consider any API 
 
 From [infura](https://infura.io) create your API key to access hosted ETH node.
 
-Create`secrets.py` inside `/eth` directory.
+Create `.env` inside root directory.
 
-Define variable `API_KEY = <INSERT YOUR API KEY>` inside `secret.py`.
+```
+WEB3_INFURA_PROJECT_ID="YOUR INFURA PROJECT ID"
+WEB3_INFURA_API_SECRET="YOUR INFURA API SECRET"
+```
