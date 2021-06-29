@@ -1,8 +1,7 @@
 from web3 import Web3
 import secrets
-import sqlite3 as sq3
 
-class ETHData():
+class InfuraData():
 
     def __init__(self, project_id, start_block=0):
         # connect to our infura hosted eth node
@@ -22,23 +21,25 @@ class ETHData():
 
         # for testing
         for i in range(latest_block - 1, latest_block):
-            yield self.w3.eth.get_block(i)
+            yield dict(self.w3.eth.get_block(i))
+
+            # what to do if only one block in update - assert?
     
     def get_txns(self, block_list):
 
         # get transaction info for each block
         for b in block_list:
-            return [self.w3.eth.get_transaction(t) for t in b['transactions']]
+            return [dict(self.w3.eth.get_transaction(t)) for t in b['transactions']]
 
     def get_txn_receipts(self, block_list):
 
         # get transaction_receipt info for each block
         for b in block_list:
-            return [self.w3.eth.get_transaction_receipt(t) for t in b['transactions']]
+            return [dict(self.w3.eth.get_transaction_receipt(t)) for t in b['transactions']]
 
 def main():
-    
-    eth = ETHData(
+
+    eth = InfuraData(
         secrets.WEB3_INFURA_PROJECT_ID_ETH
     )
 
@@ -46,9 +47,8 @@ def main():
     txns = eth.get_txns(blocks)
     txn_receipts = eth.get_txn_receipts(blocks)
 
-    return blocks, txns, txn_receipts
+    print(dir(blocks[0]), dir(txns[0]), dir(txn_receipts[0]))
     
 
 if __name__ == '__main__':
-    b, ts, trs = main()
-    print(b, ts, trs)
+    main()
