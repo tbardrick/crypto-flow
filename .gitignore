@@ -1,3 +1,4 @@
 secrets.py
 __pychache__
-ethereum.db
+*.ipynb
+/old
